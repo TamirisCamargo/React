@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
 
     const history = useHistory()
 
-    const hadleSumit = useCallback ( (e: FormEvent<HTMLFormElement>) => {
+    const hadleSubmit = useCallback ( (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoad(true)
         api.post('session', data).then(
@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
                 const sessionToken = JSON.stringify(response.data.token)
                 localStorage.setItem('@gamaServiceToken', sessionToken)
                 setLoad(false)
-                toast.success('Cadastro realizado com sucesso!', {
+                toast.success('Login realizado com sucesso!', {
                     hideProgressBar: false,
                     onClose: () => history.push('/dashboard')             
                 })
@@ -41,7 +41,7 @@ const SignIn: React.FC = () => {
         <Container>
             <div className="card">
                 <h5>Logar no sistema</h5>
-            <form onSubmit={ hadleSumit}>
+            <form onSubmit={ hadleSubmit}>
                 
                 <input 
                 type="text" 

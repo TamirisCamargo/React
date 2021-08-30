@@ -17,9 +17,9 @@ const SignUp: React.FC = () => {
 
     const history = useHistory()
 
-    const hadleSumit = useCallback ( (e: FormEvent<HTMLFormElement>) => {
+    const hadleSubmit = useCallback ( (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setLoad(false)
+        setLoad(true)
         api.post('users', data).then(
             response => {
                 setLoad(false)
@@ -29,7 +29,8 @@ const SignUp: React.FC = () => {
                 })
             }
         ).catch(e => { toast.error('Oops, algo deu errado')} )
-        .finally(() => setLoad(false))    
+        .finally(() => 
+        setLoad(false))    
     }, [data, history])
  
 
@@ -41,7 +42,7 @@ const SignUp: React.FC = () => {
         <Container>
             <div className="card">
                 <h5>Cadastre-se</h5>
-            <form onSubmit={ hadleSumit }>
+            <form onSubmit={ hadleSubmit }>
                 
                 <input 
                 type="text" 
