@@ -6,8 +6,8 @@ import { Container } from "./style";
 import { api } from "../../services/api"
 
 interface IData {
-    email:string;
-    senha: string;
+    email: string;
+    password: string;
 }
 
 const SignIn: React.FC = () => {
@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
 
     const history = useHistory()
 
-    const hadleSubmit = useCallback ( (e: FormEvent<HTMLFormElement>) => {
+    const hadleSubmit = useCallback( (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoad(true)
         api.post('session', data).then(
@@ -51,7 +51,7 @@ const SignIn: React.FC = () => {
                 <input 
                 type="password" 
                 placeholder= "Informe sua senha" 
-                onChange={e => setData({...data, senha: e.target.value})}
+                onChange={e => setData({...data, password: e.target.value})}
                 />
                                
                 <input type="submit" value= "Logar" />
